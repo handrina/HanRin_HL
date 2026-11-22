@@ -1,0 +1,721 @@
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>VELOURA BEAUTY | Beauty Store</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+
+<style>
+:root {
+    --rose:#b8758d;
+    --dark:#603d4d;
+    --pink:#f7e5eb;
+    --cream:#fffaf8;
+    --text:#493a40;
+    --muted:#95858b;
+    --white:#fff;
+}
+
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--text)}
+a{text-decoration:none;color:inherit}
+button{font-family:inherit;cursor:pointer}
+
+.announcement{
+    background:var(--dark);color:white;text-align:center;
+    padding:10px;font-size:11px;letter-spacing:2px
+}
+header{
+    position:sticky;top:0;z-index:100;
+    background:#fffaf8ed;backdrop-filter:blur(15px);
+    border-bottom:1px solid #f1e4e8
+}
+.navbar{
+    max-width:1200px;margin:auto;padding:17px 5%;
+    display:flex;justify-content:space-between;align-items:center
+}
+.logo{
+    font-family:'Playfair Display',serif;font-size:27px;
+    color:var(--dark);letter-spacing:2px;font-weight:bold
+}
+.nav-links{display:flex;gap:27px;font-size:13px;font-weight:600}
+.nav-links a:hover{color:var(--rose)}
+.nav-right{display:flex;align-items:center;gap:12px}
+.cart-btn{
+    border:0;background:var(--pink);color:var(--dark);
+    padding:11px 17px;border-radius:30px;font-weight:bold
+}
+.menu-btn{display:none;border:0;background:none;font-size:25px;color:var(--dark)}
+
+.hero{
+    max-width:1200px;margin:auto;padding:70px 6%;
+    display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:50px
+}
+.eyebrow{color:var(--rose);font-size:11px;letter-spacing:3px;font-weight:bold;text-transform:uppercase}
+.hero h1{
+    font-family:'Playfair Display',serif;font-size:clamp(43px,5vw,66px);
+    color:var(--dark);line-height:1.15;margin:20px 0
+}
+.hero h1 em{color:var(--rose)}
+.hero p{font-size:14px;color:var(--muted);line-height:2;max-width:460px}
+.hero-image{position:relative}
+.hero-image img{
+    width:100%;height:450px;object-fit:cover;
+    border-radius:190px 190px 20px 20px
+}
+.floating{
+    position:absolute;bottom:25px;left:-25px;background:white;
+    padding:17px 23px;border-radius:15px;
+    box-shadow:0 10px 35px #00000012;
+    font-family:'Playfair Display',serif;color:var(--dark)
+}
+.btn{
+    display:inline-block;background:var(--rose);color:white;
+    padding:14px 25px;border:0;border-radius:30px;
+    font-size:13px;font-weight:bold;transition:.3s
+}
+.btn:hover{background:var(--dark);transform:translateY(-3px)}
+.btn-outline{
+    display:inline-block;border:1px solid var(--rose);
+    color:var(--dark);padding:13px 24px;border-radius:30px;
+    font-size:13px;font-weight:bold
+}
+.hero-actions{display:flex;gap:13px;margin-top:28px;flex-wrap:wrap}
+
+section{padding:75px 6%}
+.heading{text-align:center;margin-bottom:40px}
+.heading small{color:var(--rose);letter-spacing:3px;font-size:11px;font-weight:bold}
+.heading h2{
+    font-family:'Playfair Display',serif;font-size:38px;
+    color:var(--dark);margin:12px 0
+}
+.heading p{font-size:13px;color:var(--muted)}
+
+.shop{background:white}
+.category-list{
+    display:flex;justify-content:center;gap:10px;
+    flex-wrap:wrap;margin-bottom:35px
+}
+.category-btn{
+    padding:10px 19px;border:1px solid #eee1e6;
+    border-radius:30px;background:white;color:var(--muted);
+    font-size:12px
+}
+.category-btn.active,.category-btn:hover{
+    background:var(--rose);color:white;border-color:var(--rose)
+}
+.product-grid{
+    max-width:1200px;margin:auto;
+    display:grid;grid-template-columns:repeat(4,1fr);gap:22px
+}
+.product-card{
+    background:var(--cream);border:1px solid #f1e8eb;
+    border-radius:17px;overflow:hidden;transition:.3s
+}
+.product-card:hover{
+    transform:translateY(-6px);box-shadow:0 12px 30px #98647a19
+}
+.product-img{position:relative;overflow:hidden}
+.product-img img{
+    width:100%;height:220px;object-fit:cover;transition:.4s
+}
+.product-card:hover .product-img img{transform:scale(1.06)}
+.product-info{padding:16px}
+.product-category{
+    color:var(--rose);font-size:10px;
+    letter-spacing:1px;text-transform:uppercase;font-weight:bold
+}
+.product-info h3{
+    font-family:'Playfair Display',serif;
+    font-size:17px;margin:8px 0;color:var(--dark)
+}
+.product-info p{font-size:11px;color:var(--muted);line-height:1.6}
+.product-bottom{
+    display:flex;justify-content:space-between;
+    align-items:center;margin-top:15px
+}
+.price{font-size:14px;font-weight:bold;color:var(--dark)}
+.add-btn{
+    border:0;background:var(--pink);color:var(--dark);
+    width:36px;height:36px;border-radius:50%;font-size:21px
+}
+.add-btn:hover{background:var(--rose);color:white}
+
+.banner{
+    background:var(--pink);display:grid;
+    grid-template-columns:1fr 1fr;gap:45px;align-items:center;padding:65px 9%
+}
+.banner img{width:100%;height:330px;object-fit:cover;border-radius:20px}
+.banner h2{
+    font-family:'Playfair Display',serif;font-size:40px;
+    color:var(--dark);margin:15px 0
+}
+.banner p{font-size:14px;color:#806b75;line-height:2;margin-bottom:25px}
+
+.about{background:white}
+.about-content{
+    max-width:1000px;margin:auto;
+    display:grid;grid-template-columns:300px 1fr;gap:50px;align-items:center
+}
+.about-photo{
+    width:100%;height:370px;object-fit:cover;
+    border-radius:160px 160px 20px 20px
+}
+.about-text h2{
+    font-family:'Playfair Display',serif;
+    font-size:38px;color:var(--dark);margin:15px 0
+}
+.about-text p{font-size:14px;line-height:2;color:var(--muted);margin-bottom:13px}
+.details{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:22px}
+.detail{padding:15px;background:var(--cream);border-radius:12px;font-size:12px}
+.detail strong{display:block;color:var(--dark);margin-bottom:5px}
+
+.social{background:var(--cream)}
+.social-grid{
+    max-width:900px;margin:auto;
+    display:grid;grid-template-columns:repeat(3,1fr);gap:20px
+}
+.social-card{
+    background:white;border:1px solid #f1e5e9;
+    padding:30px 20px;text-align:center;border-radius:18px;
+    transition:.3s
+}
+.social-card:hover{transform:translateY(-5px)}
+.social-icon{
+    width:55px;height:55px;background:var(--pink);
+    border-radius:50%;display:grid;place-items:center;
+    margin:0 auto 15px;font-size:23px
+}
+.social-card h3{
+    font-family:'Playfair Display',serif;
+    color:var(--dark);margin-bottom:8px
+}
+.social-card p{font-size:12px;color:var(--muted);margin-bottom:15px}
+.social-card a{font-size:12px;color:var(--rose);font-weight:bold}
+
+.contact{background:white}
+.contact-box{
+    max-width:750px;margin:auto;background:var(--cream);
+    padding:40px;border-radius:20px;text-align:center
+}
+.contact-box p{font-size:13px;color:var(--muted);line-height:2;margin:15px 0 25px}
+
+footer{
+    background:var(--dark);color:white;
+    text-align:center;padding:35px 5%
+}
+footer .logo{color:white;margin-bottom:12px}
+footer p{font-size:11px;line-height:2;opacity:.8}
+
+.cart-panel{
+    position:fixed;inset:0;background:#0008;
+    z-index:200;display:none;justify-content:flex-end
+}
+.cart-panel.show{display:flex}
+.cart-content{
+    background:white;width:100%;max-width:430px;
+    height:100%;overflow-y:auto;padding:27px
+}
+.cart-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:25px}
+.cart-header h2{font-family:'Playfair Display',serif;color:var(--dark)}
+.close-btn{
+    width:35px;height:35px;border:0;border-radius:50%;
+    background:var(--pink);font-size:20px
+}
+.cart-item{
+    display:flex;justify-content:space-between;
+    gap:12px;padding:15px 0;border-bottom:1px solid #eee
+}
+.cart-item button{border:0;background:none;color:#bd5f7a;margin-left:8px}
+.cart-total{
+    display:flex;justify-content:space-between;
+    padding:22px 0;font-weight:bold;color:var(--dark)
+}
+.empty-cart{text-align:center;padding:35px;color:var(--muted);font-size:13px}
+.checkout-form{display:grid;gap:12px;margin-top:15px}
+.checkout-form input,.checkout-form textarea{
+    width:100%;padding:13px;border:1px solid #eee1e6;
+    border-radius:10px;background:var(--cream);font-family:inherit
+}
+.checkout-form textarea{min-height:75px;resize:vertical}
+.checkout-button{
+    border:0;background:var(--rose);color:white;
+    padding:15px;border-radius:30px;font-weight:bold
+}
+.checkout-button:hover{background:var(--dark)}
+
+@media(max-width:900px){
+    .product-grid{grid-template-columns:repeat(3,1fr)}
+}
+@media(max-width:650px){
+    .navbar{padding:15px 5%}
+    .menu-btn{display:block}
+    .nav-links{
+        display:none;position:absolute;top:65px;left:0;width:100%;
+        background:var(--cream);padding:25px;flex-direction:column;
+        align-items:center;border-bottom:1px solid #eee
+    }
+    .nav-links.open{display:flex}
+    .logo{font-size:22px}
+    .hero{grid-template-columns:1fr;padding-top:45px}
+    .hero-image{margin:15px}
+    .hero-image img{height:360px}
+    .floating{left:-10px}
+    section{padding:55px 5%}
+    .heading h2{font-size:31px}
+    .product-grid{grid-template-columns:repeat(2,1fr);gap:13px}
+    .product-img img{height:175px}
+    .product-info{padding:12px}
+    .product-info h3{font-size:15px}
+    .price{font-size:12px}
+    .banner{grid-template-columns:1fr;padding:45px 7%}
+    .banner h2{font-size:33px}
+    .about-content{grid-template-columns:1fr;gap:25px}
+    .about-photo{max-width:260px;height:310px;margin:auto}
+    .about-text h2{font-size:32px}
+    .social-grid{grid-template-columns:1fr}
+    .contact-box{padding:25px 17px}
+}
+</style>
+</head>
+
+<body>
+
+<div class="announcement">
+    ♡ BEAUTY IS NOT ABOUT PERFECTION, IT'S ABOUT FEELING YOURSELF ♡
+</div>
+
+<header>
+<nav class="navbar">
+    <a href="#home" class="logo">VELOURA.</a>
+    <div class="nav-links" id="navLinks">
+        <a href="#home">Home</a>
+        <a href="#shop">Shop</a>
+        <a href="#about">About Me</a>
+        <a href="#social">Social Media</a>
+        <a href="#contact">Contact</a>
+    </div>
+    <div class="nav-right">
+        <button class="cart-btn" onclick="openCart()">♡ Cart (<span id="cartCount">0</span>)</button>
+        <button class="menu-btn" onclick="toggleMenu()">☰</button>
+    </div>
+</nav>
+</header>
+
+<section class="hero" id="home">
+    <div>
+        <span class="eyebrow">Your Beauty, Your Confidence</span>
+        <h1>Enhance Your Beauty, <em>Feel Your Best.</em></h1>
+        <p>
+            Selamat datang di Veloura Beauty! Temukan berbagai pilihan
+            produk makeup dan beauty essentials untuk menemani setiap
+            momen dan membuatmu semakin percaya diri.
+        </p>
+        <div class="hero-actions">
+            <a href="#shop" class="btn">Explore Products →</a>
+            <a href="#about" class="btn-outline">About Us</a>
+        </div>
+    </div>
+    <div class="hero-image">
+        <img src="https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?w=900" alt="Beauty Collection">
+        <div class="floating">Your beauty, your own way ♡</div>
+    </div>
+</section>
+
+<section class="shop" id="shop">
+    <div class="heading">
+        <small>OUR BEAUTY COLLECTION</small>
+        <h2>Find Your Beauty Essentials</h2>
+        <p>Produk makeup pilihan untuk melengkapi penampilanmu.</p>
+    </div>
+
+    <div class="category-list">
+        <button class="category-btn active" onclick="filterProducts('all',this)">All Products</button>
+        <button class="category-btn" onclick="filterProducts('lips',this)">Lip Products</button>
+        <button class="category-btn" onclick="filterProducts('face',this)">Face Makeup</button>
+        <button class="category-btn" onclick="filterProducts('eyes',this)">Eye Makeup</button>
+        <button class="category-btn" onclick="filterProducts('tools',this)">Beauty Tools</button>
+    </div>
+
+    <div class="product-grid" id="productGrid"></div>
+</section>
+
+<section class="banner">
+    <div>
+        <span class="eyebrow">A Little Beauty Reminder</span>
+        <h2>Makeup Is Art, Beauty Is You.</h2>
+        <p>
+            Makeup bukan tentang mengubah siapa dirimu.
+            Makeup adalah salah satu cara untuk mengekspresikan diri,
+            meningkatkan rasa percaya diri, dan merayakan kecantikanmu sendiri.
+        </p>
+        <a href="#shop" class="btn">Discover Your Favorites →</a>
+    </div>
+    <img src="https://images.unsplash.com/photo-1596462502278-27bfdc403348?w=900" alt="Makeup Products">
+</section>
+
+<section class="about" id="about">
+    <div class="heading">
+        <small>GET TO KNOW ME</small>
+        <h2>Behind Veloura Beauty</h2>
+        <p>Kenali pemilik dan cerita di balik toko kami.</p>
+    </div>
+    <div class="about-content">
+        <img class="about-photo" src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=700" alt="Owner Profile">
+        <div class="about-text">
+            <span class="eyebrow">Hello, Nice To Meet You!</span>
+            <h2>A Little Story About Me.</h2>
+            <p>
+                Halo! Saya adalah pemilik Veloura Beauty, sebuah toko online
+                yang berfokus pada penjualan berbagai produk makeup dan
+                perlengkapan kecantikan.
+            </p>
+            <p>
+                Melalui bisnis ini, saya ingin mengembangkan kreativitas,
+                kemampuan berwirausaha, serta memanfaatkan teknologi digital
+                untuk membangun bisnis yang menarik dan mudah dijangkau pelanggan.
+            </p>
+            <div class="details">
+                <div class="detail"><strong>Nama</strong>Nama Kamu</div>
+                <div class="detail"><strong>Pendidikan</strong>Program Studi Kamu</div>
+                <div class="detail"><strong>Bidang</strong>Entrepreneurship</div>
+                <div class="detail"><strong>Interest</strong>Beauty & Business</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="social" id="social">
+    <div class="heading">
+        <small>LET'S CONNECT</small>
+        <h2>Find Us On Social Media</h2>
+        <p>Ikuti akun media sosial kami untuk mendapatkan informasi terbaru.</p>
+    </div>
+    <div class="social-grid">
+        <div class="social-card">
+            <div class="social-icon">📘</div>
+            <h3>Facebook</h3>
+            <p>Informasi produk, promosi, dan penawaran terbaru.</p>
+            <a href="https://facebook.com/" target="_blank">Visit Facebook →</a>
+        </div>
+        <div class="social-card">
+            <div class="social-icon">📸</div>
+            <h3>Instagram</h3>
+            <p>Katalog makeup, foto produk, dan beauty inspiration.</p>
+            <a href="https://instagram.com/" target="_blank">Visit Instagram →</a>
+        </div>
+        <div class="social-card">
+            <div class="social-icon">🎵</div>
+            <h3>TikTok</h3>
+            <p>Beauty tips, tutorial makeup, dan rekomendasi produk.</p>
+            <a href="https://tiktok.com/" target="_blank">Visit TikTok →</a>
+        </div>
+    </div>
+</section>
+
+<section class="contact" id="contact">
+    <div class="heading">
+        <small>WE ARE HERE FOR YOU</small>
+        <h2>Let's Talk Beauty!</h2>
+        <p>Butuh informasi produk atau ingin melakukan pemesanan?</p>
+    </div>
+    <div class="contact-box">
+        <h2 style="font-family:'Playfair Display',serif;color:var(--dark)">We'd Love To Hear From You ♡</h2>
+        <p>Hubungi admin Veloura Beauty melalui WhatsApp untuk mendapatkan informasi dan melakukan pemesanan.</p>
+        <button class="btn" onclick="contactAdmin()">Contact via WhatsApp →</button>
+    </div>
+</section>
+
+<footer>
+    <div class="logo">VELOURA.</div>
+    <p>Your Beauty, Your Confidence.</p>
+    <p>© 2026 Veloura Beauty. All Rights Reserved.</p>
+</footer>
+
+<div class="cart-panel" id="cartPanel" onclick="closeCartOutside(event)">
+    <div class="cart-content">
+        <div class="cart-header">
+            <h2>Your Shopping Bag ♡</h2>
+            <button class="close-btn" onclick="closeCart()">×</button>
+        </div>
+
+        <div id="cartItems">
+            <div class="empty-cart">Keranjang belanjamu masih kosong ♡</div>
+        </div>
+
+        <div class="cart-total">
+            <span>Total Pembelian</span>
+            <span id="cartTotal">Rp0</span>
+        </div>
+
+        <form class="checkout-form" id="checkoutForm" onsubmit="checkout(event)">
+            <h3 style="font-family:'Playfair Display',serif;color:var(--dark)">Customer Information</h3>
+            <input type="text" id="customerName" placeholder="Nama lengkap" required>
+            <input type="tel" id="customerPhone" placeholder="Nomor WhatsApp" required>
+            <textarea id="customerAddress" placeholder="Alamat lengkap pengiriman" required></textarea>
+            <textarea id="customerNote" placeholder="Catatan tambahan (opsional)"></textarea>
+            <button type="submit" class="checkout-button">Checkout via WhatsApp →</button>
+            <p style="font-size:10px;color:var(--muted);text-align:center">
+                Pesanan akan dikirim ke WhatsApp admin untuk konfirmasi pembayaran.
+            </p>
+        </form>
+    </div>
+</div>
+
+<!-- Logika JavaScript -->
+<script>
+// 1. Masukkan URL Apps Script Anda (/exec) dan Nomor WhatsApp Admin di bawah ini:
+const API_URL = "https://script.google.com/macros/s/AKfycbz2I0cZNtFle2XXcmXXcrMS88GCw_Jqd1vjITtNCogxz6BfPCf2yLhBmtKBEVnWJeoWUQ/exec";
+const WA_ADMIN = "6287814185830"; // Format: 628xxxxxxxxxx (awalan 62)
+
+// 2. Daftar produk makeup
+const products = [
+    {name:"Lipstik Matte",category:"lips",price:45000,image:"https://images.unsplash.com/photo-1586495777744-4413f21062fa?w=600",desc:"Lipstik matte dengan tampilan warna yang menawan."},
+    {name:"Lip Tint",category:"lips",price:35000,image:"https://images.unsplash.com/photo-1631214540242-8b3c2b6e2f9c?w=600",desc:"Warna bibir segar untuk tampilan sehari-hari."},
+    {name:"Lip Gloss",category:"lips",price:38000,image:"https://images.unsplash.com/photo-1625093742435-6fa192b6fb10?w=600",desc:"Kilau cantik untuk bibir tampak lebih fresh."},
+    {name:"Bedak Padat",category:"face",price:55000,image:"https://images.unsplash.com/photo-1596462502278-27bfdc403348?w=600",desc:"Bedak praktis untuk membantu merapikan makeup."},
+    {name:"Bedak Tabur",category:"face",price:50000,image:"https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?w=600",desc:"Bedak tabur untuk hasil akhir makeup."},
+    {name:"Foundation",category:"face",price:85000,image:"https://images.unsplash.com/photo-1631214540242-8b3c2b6e2f9c?w=600",desc:"Base makeup untuk membantu meratakan tampilan kulit."},
+    {name:"Cushion",category:"face",price:95000,image:"https://images.unsplash.com/photo-1596462502278-27bfdc403348?w=600",desc:"Complexion praktis untuk rutinitas makeup."},
+    {name:"Concealer",category:"face",price:48000,image:"https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?w=600",desc:"Membantu menyamarkan tampilan noda pada wajah."},
+    {name:"Blush On",category:"face",price:42000,image:"https://images.unsplash.com/photo-1512496015851-a90fb38ba796?w=600",desc:"Sentuhan warna untuk pipi tampak merona."},
+    {name:"Highlighter",category:"face",price:50000,image:"https://images.unsplash.com/photo-1596462502278-27bfdc403348?w=600",desc:"Tambahkan kilau pada bagian wajah pilihanmu."},
+    {name:"Eyeshadow Palette",category:"eyes",price:75000,image:"https://images.unsplash.com/photo-1512496015851-a90fb38ba796?w=600",desc:"Kombinasi warna untuk berbagai kreasi riasan mata."},
+    {name:"Maskara",category:"eyes",price:45000,image:"https://images.unsplash.com/photo-1631214540242-8b3c2b6e2f9c?w=600",desc:"Lengkapi riasan mata dengan sentuhan maskara."},
+    {name:"Eyeliner",category:"eyes",price:35000,image:"https://images.unsplash.com/photo-1512496015851-a90fb38ba796?w=600",desc:"Bentuk garis mata sesuai gaya favoritmu."},
+    {name:"Pensil Alis",category:"eyes",price:28000,image:"https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?w=600",desc:"Bantu membentuk dan merapikan tampilan alis."},
+    {name:"Brow Gel",category:"eyes",price:38000,image:"https://images.unsplash.com/photo-1596462502278-27bfdc403348?w=600",desc:"Menata alis agar terlihat lebih rapi."},
+    {name:"Setting Spray",category:"face",price:65000,image:"https://images.unsplash.com/photo-1608248543803-ba4f8c70ae0b?w=600",desc:"Langkah akhir untuk melengkapi rutinitas makeup."},
+    {name:"Primer Wajah",category:"face",price:60000,image:"https://images.unsplash.com/photo-1608248543803-ba4f8c70ae0b?w=600",desc:"Persiapkan wajah sebelum menggunakan makeup."},
+    {name:"Makeup Remover",category:"face",price:45000,image:"https://images.unsplash.com/photo-1608248543803-ba4f8c70ae0b?w=600",desc:"Produk pembersih untuk rutinitas setelah makeup."},
+    {name:"Spons Makeup",category:"tools",price:20000,image:"https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?w=600",desc:"Alat bantu untuk mengaplikasikan complexion."},
+    {name:"Kuas Makeup Set",category:"tools",price:65000,image:"https://images.unsplash.com/photo-1512496015851-a90fb38ba796?w=600",desc:"Set kuas untuk membantu aplikasi berbagai produk makeup."}
+];
+
+let cart = [];
+
+// 3. Tampilkan produk
+function renderProducts(category="all"){
+    const grid=document.getElementById("productGrid");
+    const filtered=category==="all"?products:products.filter(p=>p.category===category);
+
+    grid.innerHTML=filtered.map((p)=>{
+        const index=products.indexOf(p);
+        return `
+        <article class="product-card">
+            <div class="product-img">
+                <img src="${p.image}" alt="${p.name}" loading="lazy">
+            </div>
+            <div class="product-info">
+                <span class="product-category">${p.category==="lips"?"Lip Products":p.category==="face"?"Face Makeup":p.category==="eyes"?"Eye Makeup":"Beauty Tools"}</span>
+                <h3>${p.name}</h3>
+                <p>${p.desc}</p>
+                <div class="product-bottom">
+                    <span class="price">${formatRupiah(p.price)}</span>
+                    <button class="add-btn" onclick="addToCart(${index})">+</button>
+                </div>
+            </div>
+        </article>`;
+    }).join("");
+}
+
+// 4. Filter kategori
+function filterProducts(category,button){
+    document.querySelectorAll(".category-btn").forEach(b=>b.classList.remove("active"));
+    button.classList.add("active");
+    renderProducts(category);
+}
+
+// 5. Format rupiah
+function formatRupiah(number){
+    return new Intl.NumberFormat("id-ID",{
+        style:"currency",currency:"IDR",maximumFractionDigits:0
+    }).format(number);
+}
+
+// 6. Tambah produk ke keranjang
+function addToCart(index){
+    const product=products[index];
+    const existing=cart.find(item=>item.name===product.name);
+
+    if(existing){
+        existing.quantity++;
+    }else{
+        cart.push({...product,quantity:1});
+    }
+
+    updateCart();
+    alert(product.name+" berhasil ditambahkan ke keranjang ♡");
+}
+
+// 7. Update keranjang
+function updateCart(){
+    const items=document.getElementById("cartItems");
+    const count=document.getElementById("cartCount");
+    const totalElement=document.getElementById("cartTotal");
+
+    const totalQuantity=cart.reduce((sum,item)=>sum+item.quantity,0);
+    const total=cart.reduce((sum,item)=>sum+item.price*item.quantity,0);
+
+    count.textContent=totalQuantity;
+    totalElement.textContent=formatRupiah(total);
+
+    if(cart.length===0){
+        items.innerHTML='<div class="empty-cart">Keranjang belanjamu masih kosong ♡</div>';
+        return;
+    }
+
+    items.innerHTML=cart.map((item,index)=>`
+        <div class="cart-item">
+            <div>
+                <strong>${item.name}</strong><br>
+                ${formatRupiah(item.price)} × ${item.quantity}
+            </div>
+            <div>
+                <strong>${formatRupiah(item.price*item.quantity)}</strong>
+                <button onclick="removeItem(${index})">✕</button>
+            </div>
+        </div>
+    `).join("");
+}
+
+// 8. Hapus produk
+function removeItem(index){
+    if(cart[index].quantity>1){
+        cart[index].quantity--;
+    }else{
+        cart.splice(index,1);
+    }
+    updateCart();
+}
+
+// 9. Buka dan tutup keranjang
+function openCart(){
+    document.getElementById("cartPanel").classList.add("show");
+}
+function closeCart(){
+    document.getElementById("cartPanel").classList.remove("show");
+}
+function closeCartOutside(event){
+    if(event.target.id==="cartPanel")closeCart();
+}
+
+// 10. Menu mobile
+function toggleMenu(){
+    document.getElementById("navLinks").classList.toggle("open");
+}
+document.querySelectorAll(".nav-links a").forEach(link=>{
+    link.addEventListener("click",()=>{
+        document.getElementById("navLinks").classList.remove("open");
+    });
+});
+
+// 11. Kontak WhatsApp
+function contactAdmin(){
+    const message="Halo Admin Veloura Beauty, saya ingin bertanya mengenai produk makeup yang tersedia.";
+    window.open("https://wa.me/"+WA_ADMIN+"?text="+encodeURIComponent(message),"_blank");
+}
+
+// 12. Checkout dan simpan pesanan
+async function checkout(event){
+    event.preventDefault();
+
+    if(cart.length===0){
+        alert("Keranjang belanja masih kosong!");
+        return;
+    }
+
+    const name=document.getElementById("customerName").value.trim();
+    const phone=document.getElementById("customerPhone").value.trim();
+    const address=document.getElementById("customerAddress").value.trim();
+    const note=document.getElementById("customerNote").value.trim();
+
+    if(!name||!phone||!address){
+        alert("Mohon lengkapi data pembeli!");
+        return;
+    }
+
+    const total=cart.reduce((sum,item)=>sum+item.price*item.quantity,0);
+    const orderId="VLR-"+Date.now();
+
+    const orderDetails=cart.map((item,index)=>
+        `${index+1}. ${item.name}\n${item.quantity} x ${formatRupiah(item.price)} = ${formatRupiah(item.price*item.quantity)}`
+    ).join("\n\n");
+
+    const message=`
+*PESANAN BARU - VELOURA BEAUTY*
+--------------------------------
+Nomor Pesanan: ${orderId}
+
+*DATA PEMBELI*
+Nama: ${name}
+WhatsApp: ${phone}
+Alamat: ${address}
+
+*DETAIL PESANAN*
+${orderDetails}
+
+--------------------------------
+*TOTAL: ${formatRupiah(total)}*
+
+Catatan: ${note||"-"}
+
+Mohon konfirmasi pesanan dan informasi pembayaran.
+Terima kasih ♡
+    `.trim();
+
+    const waURL="https://wa.me/"+WA_ADMIN+"?text="+encodeURIComponent(message);
+
+    // Buka WhatsApp admin
+    const whatsappWindow=window.open(waURL,"_blank");
+
+    // Simpan data ke Google Apps Script jika URL telah diisi
+    if(API_URL!=="MASUKKAN_URL_GOOGLE_APPS_SCRIPT_DISINI"){
+        try{
+            await fetch(API_URL,{
+                method:"POST",
+                mode:"no-cors",
+                headers:{"Content-Type":"application/json"},
+                body:JSON.stringify({
+                    orderId:orderId,
+                    name:name,
+                    phone:phone,
+                    address:address,
+                    note:note,
+                    items:cart.map(item=>({
+                        name:item.name,
+                        price:item.price,
+                        quantity:item.quantity
+                    })),
+                    total:total,
+                    status:"Menunggu Konfirmasi Pembayaran",
+                    date:new Date().toLocaleString("id-ID")
+                })
+            });
+        }catch(error){
+            console.error("Gagal mengirim data:",error);
+        }
+    }
+
+    if(!whatsappWindow){
+        alert("Izinkan pop-up browser agar WhatsApp dapat dibuka.");
+    }
+
+    alert("Pesanan telah disiapkan. Silakan lanjutkan konfirmasi melalui WhatsApp.");
+
+    cart=[];
+    updateCart();
+    document.getElementById("checkoutForm").reset();
+    closeCart();
+}
+
+// Tampilkan semua produk saat website dibuka
+renderProducts();
+updateCart();
+</script>
+
+</body>
+</html>
